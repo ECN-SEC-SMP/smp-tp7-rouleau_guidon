@@ -2,11 +2,11 @@
 
 
 Point::Point():x(0),y(0){}
-Point(double x, double y):: x(x), y(y){}
-Point(const Point& p) : x(p.x), y(p.y) {}
+Point::Point(double x, double y): x(x), y(y){}
+Point::Point(const Point& p) : x(p.x), y(p.y) {}
 
-double getX() const { return x; }
-double getY() const { return y; }
+double Point:: getX() const { return x; }
+double Point:: getY() const { return y; }
 
 void Point::translater(const Point& p) {
     x += p.getX();
@@ -18,3 +18,13 @@ void Point::translater(double dx, double dy) {
     y += dy;
 }
 
+ostream& operator<<(ostream& os, const Point& p) {
+    os << "(" << p.getX() << ", " << p.getY() << ")";
+    return os;
+}
+
+Point& Point::operator+=(const Point& p) {
+    x += p.x;
+    y += p.y;
+    return *this;
+}

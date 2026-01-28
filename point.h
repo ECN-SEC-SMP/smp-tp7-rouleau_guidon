@@ -2,6 +2,8 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+using namespace std;
+
 #pragma once
 
 class Point {
@@ -23,7 +25,14 @@ public:
     void setX(double x);
     void setY(double y);
 
-    // Méthodes
+    // Methodes
     void translater(const Point& p);
     void translater(double dx, double dy);
+
+    // operateur += (on y revient juste après)
+    Point& operator+=(const Point& p);
+
+    // operateur <<
+    //friend ostream& operator<<(ostream& os, const Point& p);
 };
+ostream& operator<<(ostream& os, const Point& p);
