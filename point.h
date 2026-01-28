@@ -1,10 +1,12 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
 using namespace std;
 
-#pragma once
+
 
 class Point {
 private:
@@ -29,10 +31,30 @@ public:
     void translater(const Point& p);
     void translater(double dx, double dy);
 
-    // operateur += (on y revient juste après)
+    // operateur += 
     Point& operator+=(const Point& p);
 
     // operateur <<
-    //friend ostream& operator<<(ostream& os, const Point& p);
+    friend ostream& operator<<(ostream& os, const Point& p);
 };
-ostream& operator<<(ostream& os, const Point& p);
+//ostream& operator<<(ostream& os, const Point& p);
+
+class Forme {
+protected:
+    Point centre;
+
+  
+
+public:
+    Forme(const Point& c);
+    Forme(const Forme& f); 
+    virtual ~Forme();
+
+    Forme& operator+=(const Point& p);
+    friend ostream& operator<<(ostream& os, const Forme& f);
+
+    // Methodes abstraites
+    virtual double perimetre() const = 0;
+    virtual double surface() const = 0;
+
+};

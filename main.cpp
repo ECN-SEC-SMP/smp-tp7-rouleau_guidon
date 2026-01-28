@@ -10,8 +10,5 @@ int main(void){
 
     p1 += p2;
     std::cout<< p1<<std::endl;
-
-
-
-
+    
 }

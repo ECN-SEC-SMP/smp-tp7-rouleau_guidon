@@ -28,3 +28,17 @@ Point& Point::operator+=(const Point& p) {
     y += p.y;
     return *this;
 }
+
+Forme:: Forme(const Point& c) : centre(c) {}
+
+Forme& Forme:: operator+=(const Point& p) {
+    centre += p;   // on reutilise Point::operator+=
+    return *this;
+}
+
+ostream& operator<<(ostream& os, const Forme& f) {
+    os << "Centre : " << f.centre;
+    return os;
+}
+
+
